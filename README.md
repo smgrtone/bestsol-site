@@ -1,9 +1,5 @@
-# bestsol-site
+# BESTSOL static website
 
-Static website for Bharati Environment and Sustainable Technology Solutions (bestsol.org).
+Six linked HTML pages with local CSS, JavaScript and SVG image fallbacks. Extract the archive and open index.html to preview. No build step or external asset dependency. See MANUAL-GITHUB-UPLOAD.md for deployment and IMAGE-UPLOAD-GUIDE.md for photo filenames. Placeholder text is embedded in the SVG images, not in separate page panels. Actual JPG/PNG photographs are intentionally not bundled. No repository or domain changes have been made by this export.
 
-- Plain HTML/CSS/JS, no build step.
-- Pages: `/`, `/supad/`, `/tarak/`, `/team/`, `/contact/`.
-- Shared files: `assets/styles.css`, `assets/main.js`.
-- Photos go in `assets/img/` (see the file names used in the pages). Until a photo is added, some pages fall back to the Squarespace image URL or a gradient placeholder.
-- Hosting: GitHub Pages from the `main` branch (root).
+This is the COMPLETE site export, not an update-only patch. The circular header icon is loaded from assets/img/header-icon.png; no real photographs or company icon artwork are bundled.

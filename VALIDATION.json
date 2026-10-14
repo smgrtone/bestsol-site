@@ -1,0 +1,12 @@
+{
+  "checks": {
+    "pages": 6,
+    "local_references": 97,
+    "circular_header_slots": 6,
+    "main_image_placeholders": 23,
+    "team_members": 8,
+    "separate_instruction_panels": 0
+  },
+  "issues": [],
+  "testing_scope": "Static markup and local file references. No live site, browser rendering, DNS or HTTPS checks."
+}
