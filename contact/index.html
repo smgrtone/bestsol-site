@@ -109,10 +109,11 @@
     }
 
     .brand-icon {
+      display: block;
       width: 44px;
       height: 44px;
       flex: 0 0 44px;
-      color: var(--green);
+      object-fit: contain;
     }
 
     .brand-title {
@@ -386,44 +387,14 @@
         href="/"
         aria-label="BEST Solutions home"
       >
-        <!-- Inline brand mark: no external image file required. -->
-        <svg
+        <img
           class="brand-icon"
-          viewBox="0 0 48 48"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          focusable="false"
+          src="/assets/img/header-icon.png"
+          alt="BEST Solutions"
+          width="44"
+          height="44"
+          decoding="async"
         >
-          <circle
-            cx="24"
-            cy="24"
-            r="22"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-          />
-
-          <path
-            d="M15 30C15 19 22 12 34 13C35 25 28 33 18 32"
-            fill="currentColor"
-          />
-
-          <path
-            d="M15 36L29 20"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
-
-          <path
-            d="M20 29L28 21"
-            fill="none"
-            stroke="#faf9f5"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-        </svg>
 
         <span class="brand-title">
           BEST Solutions Pvt Ltd
