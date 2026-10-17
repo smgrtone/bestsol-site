@@ -12,33 +12,418 @@
   >
 
   <link rel="canonical" href="https://bestsol.org/contact/">
-  <link rel="stylesheet" href="../assets/styles.css">
+  <meta name="theme-color" content="#243e32">
 
-  <script defer src="../assets/main.js"></script>
+  <style>
+    /* Base */
+    :root {
+      color-scheme: light;
+      --paper: #faf9f5;
+      --sand: #eee8dc;
+      --ink: #24352c;
+      --muted: #60685f;
+      --green: #243e32;
+      --line: #d9ddd3;
+      --white: #ffffff;
+      --max-width: 1180px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-width: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    a {
+      color: inherit;
+      text-underline-offset: 0.22em;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #9a6827;
+      outline-offset: 5px;
+    }
+
+    .wrap {
+      width: min(var(--max-width), calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      z-index: 100;
+      padding: 10px 16px;
+      transform: translateY(-200%);
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .skip:focus {
+      transform: translateY(0);
+    }
+
+    /* Header */
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .header-inner {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      color: var(--green);
+    }
+
+    .brand-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .brand-title small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .navigation a {
+      padding-block: 8px;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .navigation a:hover,
+    .navigation a[aria-current="page"] {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+    }
+
+    .menu {
+      display: none;
+      border: 1px solid var(--green);
+      border-radius: 4px;
+      padding: 7px 14px;
+      background: transparent;
+      color: var(--green);
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .page-hero {
+      padding: 90px 0 94px;
+      background: var(--sand);
+    }
+
+    .kicker {
+      margin: 0 0 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin-top: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin-bottom: 28px;
+      font-size: clamp(42px, 5.5vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .display {
+      font-weight: 400;
+    }
+
+    .lead {
+      max-width: 740px;
+      margin: 0;
+      color: #4e584e;
+      font-size: clamp(17px, 1.6vw, 20px);
+      line-height: 1.8;
+    }
+
+    /* Contact details */
+    .contact-section {
+      padding: 82px 0 96px;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+    }
+
+    .contact-block {
+      min-width: 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact-block .kicker {
+      margin-bottom: 18px;
+      color: var(--muted);
+    }
+
+    .contact-block h2 {
+      margin-bottom: 24px;
+      font-size: clamp(27px, 3vw, 35px);
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    .email {
+      display: inline-block;
+      max-width: 100%;
+      color: var(--green);
+      font-size: clamp(21px, 2.5vw, 31px);
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+      text-decoration-thickness: 1px;
+    }
+
+    .email:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    address {
+      color: var(--muted);
+      font-size: 17px;
+      font-style: normal;
+      line-height: 1.9;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 25px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Tablet and mobile */
+    @media (max-width: 900px) {
+      .header-inner {
+        flex-wrap: wrap;
+        gap: 0;
+        padding-block: 20px;
+      }
+
+      .navigation {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px 22px;
+        padding-top: 20px;
+      }
+
+      /* Keep navigation visible if JavaScript is unavailable. */
+      .js .menu {
+        display: inline-flex;
+        margin-left: auto;
+      }
+
+      .js .navigation {
+        display: none;
+      }
+
+      .js .navigation.is-open {
+        display: flex;
+      }
+
+      .contact-layout {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .wrap {
+        width: calc(100% - 36px);
+      }
+
+      .brand {
+        gap: 9px;
+      }
+
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+      }
+
+      .brand-title {
+        font-size: 15px;
+      }
+
+      .brand-title small {
+        font-size: 9px;
+        letter-spacing: 0.04em;
+      }
+
+      .menu {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+
+      .navigation {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .navigation a {
+        padding-block: 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .page-hero {
+        padding: 58px 0 62px;
+      }
+
+      .contact-section {
+        padding: 52px 0 64px;
+      }
+
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
   <!-- Header -->
-  <header>
+  <header class="site-header">
     <div class="wrap header-inner">
       <a
         class="brand"
-        href="../index.html"
+        href="/"
         aria-label="BEST Solutions home"
       >
-        <img
-          class="header-icon"
-          src="../assets/img/header-icon-placeholder.svg"
-          data-upload="../assets/img/header-icon.png"
-          data-photo-alt="BEST Solutions icon"
-          alt="Circular company icon placeholder"
-          title="Upload assets/img/header-icon.png · 500 × 500 px square PNG"
-          width="42"
-          height="42"
-          decoding="async"
+        <!-- Inline brand mark: no external image file required. -->
+        <svg
+          class="brand-icon"
+          viewBox="0 0 48 48"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
         >
+          <circle
+            cx="24"
+            cy="24"
+            r="22"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          />
+
+          <path
+            d="M15 30C15 19 22 12 34 13C35 25 28 33 18 32"
+            fill="currentColor"
+          />
+
+          <path
+            d="M15 36L29 20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+
+          <path
+            d="M20 29L28 21"
+            fill="none"
+            stroke="#faf9f5"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
 
         <span class="brand-title">
           BEST Solutions Pvt Ltd
@@ -55,40 +440,30 @@
         Menu
       </button>
 
-      <nav id="navigation" aria-label="Main navigation">
-        <a href="../supad/index.html">
-          Carbon Project
-        </a>
-
-        <a href="../tarak/index.html">
-          Technology
-        </a>
-
-        <a href="../ghg-measurement/index.html">
-          Measure GHG
-        </a>
-
-        <a href="../team/index.html">
-          Team
-        </a>
-
-        <a
-          href="../contact/index.html"
-          aria-current="page"
-        >
-          Contact
-        </a>
+      <nav
+        class="navigation"
+        id="navigation"
+        aria-label="Main navigation"
+      >
+        <a href="/supad/">Carbon Project</a>
+        <a href="/tarak/">Technology</a>
+        <a href="/ghg-measurement/">Measure GHG</a>
+        <a href="/team/">Team</a>
+        <a href="/contact/" aria-current="page">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- Main content -->
   <main id="main">
-    <section class="page-hero sand">
+    <section
+      class="page-hero"
+      aria-labelledby="contact-heading"
+    >
       <div class="wrap">
         <p class="kicker">Contact</p>
 
-        <h1>
+        <h1 id="contact-heading">
           Start a conversation.<br>
           <em class="display">Build something useful.</em>
         </h1>
@@ -101,13 +476,15 @@
       </div>
     </section>
 
-    <section class="section">
+    <section
+      class="contact-section"
+      aria-label="Contact details"
+    >
       <div class="wrap contact-layout">
-        <!-- Email -->
-        <div>
+        <div class="contact-block">
           <p class="kicker">Email</p>
 
-          <h3>Tell us what you have in mind.</h3>
+          <h2>Tell us what you have in mind.</h2>
 
           <a
             class="email"
@@ -117,15 +494,15 @@
           </a>
         </div>
 
-        <!-- Address -->
-        <div>
+        <div class="contact-block">
           <p class="kicker">Address</p>
 
-          <h3>BEST Solutions Pvt Ltd</h3>
+          <h2>BEST Solutions Pvt Ltd</h2>
 
           <address>
             Bharati Environment and Sustainable Technology Solutions<br>
-            Tumkuru Innovation Incubation &amp; Entrepreneurship Council (TIIEC)<br>
+            Tumkuru Innovation Incubation &amp; Entrepreneurship
+            Council (TIIEC)<br>
             Tumkur University
           </address>
         </div>
@@ -134,16 +511,14 @@
   </main>
 
   <!-- Footer -->
-  <footer>
+  <footer class="site-footer">
     <div class="wrap footer-inner">
       <span>
         © 2026 Bharati Environment and Sustainable Technology Solutions
       </span>
 
       <div class="footer-links">
-        <a href="../contact/index.html">
-          Contact
-        </a>
+        <a href="/contact/">Contact</a>
 
         <a
           href="https://www.linkedin.com/company/bestsolorg/"
@@ -155,5 +530,52 @@
       </div>
     </div>
   </footer>
+
+  <!-- Standalone mobile navigation -->
+  <script>
+    (() => {
+      const menu = document.querySelector(".menu");
+      const navigation = document.getElementById("navigation");
+
+      if (!menu || !navigation) {
+        return;
+      }
+
+      document.documentElement.classList.add("js");
+
+      const setMenuOpen = (open) => {
+        menu.setAttribute("aria-expanded", String(open));
+        navigation.classList.toggle("is-open", open);
+        menu.textContent = open ? "Close" : "Menu";
+      };
+
+      menu.addEventListener("click", () => {
+        const open = menu.getAttribute("aria-expanded") === "true";
+        setMenuOpen(!open);
+      });
+
+      navigation.addEventListener("click", (event) => {
+        if (event.target.closest("a")) {
+          setMenuOpen(false);
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "Escape" &&
+          menu.getAttribute("aria-expanded") === "true"
+        ) {
+          setMenuOpen(false);
+          menu.focus();
+        }
+      });
+
+      const desktop = window.matchMedia("(min-width: 901px)");
+
+      desktop.addEventListener("change", () => {
+        setMenuOpen(false);
+      });
+    })();
+  </script>
 </body>
 </html>
